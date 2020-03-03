@@ -1,0 +1,128 @@
+/*
+Copyright © 2018 Dennis Schulmeister-Zimolong
+
+E-Mail: dhbw@windows3.de
+Webseite: https://www.wpvs.de/
+
+Dieser Quellcode ist lizenziert unter einer
+Creative Commons Namensnennung 4.0 International Lizenz.
+*/
+
+/*
+ * ALLGEMEINES
+ */
+html {
+    /* https://pixabay.com/de/photos/roboter-3d-drucken-tapete-ai-2937861/ */
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: sans-serif;
+    font-size: 12pt;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+
+    text-align: justify;
+    hyphens: auto;
+}
+
+.container {
+    background: rgba(255,255,255,0.9);
+    color: rgba(40,40,40);
+
+    box-sizing: border-box;
+
+    padding: 1em;
+    border-radius: 0.6em;
+    max-width: 62em;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+p {
+    box-sizing: border-box;
+    max-width: 62em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+h1 {
+    color: crimson;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+h3 {
+    margin-top: 1.5em;
+}
+
+a, a:visited {
+    color: #2A72B9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-none {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spacing li {
+    margin-bottom: 0.75em;
+}
+
+tt {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    color: #006EA3;
+}
+
+img {
+    border: 1px solid grey;
+}
+
+td {
+    vertical-align: top;
+}
+
+.label {
+    font-weight: bold;
+    padding-right: 1em;
+}
+
+td, th {
+    text-align: left;
+    padding-right: 1em;
+}
+
+td:last-child, .th:last-child {
+    padding-right: 0;
+}
+
+th {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+pre {
+    background: none !important;
+}
