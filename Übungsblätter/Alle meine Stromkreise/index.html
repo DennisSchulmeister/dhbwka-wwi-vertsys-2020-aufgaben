@@ -55,8 +55,8 @@
         <div class="container">
             <h2>REST-Backendservice</h2>
             <p>
-                Zunächst soll in Spring ein Backsendservie programmiert werden, der es ermöglicht,
-                über einen REST-Webservices die Daten der Anwendungen zu lesen und zu schreiben.
+                Zunächst soll in Spring ein Backsendservice programmiert werden, der es ermöglicht,
+                über einen REST-Webservice auf die Daten der Anwendung zuzugreifen.
                 Hierfür soll auf <a href="https://start.spring.io" target="_blank">start.spring.io</a>
                 ein Springboot-Projekt mit folgenden Komponenten angelegt werden:
             </p>
@@ -87,7 +87,7 @@
                 Die Anwendung soll, wie in den Folien gezeigt, über die Datei <tt>applications.properties</tt>
                 so konfiguriert werden, dass der REST-Webservice unter der Adresse
                 <a href="http://localhost:8080/api" target="_blank">http://localhost:8080/api</a> aufrufbar ist.
-                Folgendes Datenmodell soll der Webservice dabei implementieren:
+                Folgendes Datenmodell soll implementiert werden:
             </p>
             <div>
                 <a href="datenmodell.png" target="_blank">
@@ -97,8 +97,7 @@
             <p>
                 Teste den Webserivce mit der eingebauten Weboberfläche oder mit Postman 📨, um zu zeigen,
                 dass er funktioniert. Sorge zusätzlich dafür, dass, wie in den Folien gezeigt, mit einem
-                im Quellcode hinterlegten SQL-Skript automatisch Testdaten beim Starten der Anwendung angelegt
-                werden.
+                im Quellcode hinterlegten SQL-Skript automatisch Testdaten angelegt werden.
             </p>
         </div>
 
@@ -182,7 +181,7 @@ public class StreamingService implements Serializable {
 }</code></pre>
             <p>
                 Die IMDB-ID für Serien und Episoden wird benötigt, um in der Bonusaufgabe Bilder
-                von IMDB abrufen zu können. Sie entspricht dem rot unterstrichenen Teil einer der
+                von IMDB abrufen zu können. Sie entspricht dem unten rot unterstrichenen Teil der
                 IMDB-URL, wenn man dort eine Serie oder Episode aufruft:
             </p>
             <p>
