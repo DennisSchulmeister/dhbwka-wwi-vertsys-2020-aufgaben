@@ -1,0 +1,25 @@
+Aufgabe 1: Grundlagen
+  a) Fehlerstrategien: 10 P
+  b) Transparenzarten: 10 P
+  c) CAP-Theorem: 5 P
+  d) Logische Uhr: 5 P
+  Summe: 30 P
+
+Aufgabe 2: REST-Webservices
+  a) Erklärung: 5 P
+  b) Entwurf: 10 P
+  c) Implementierung: 10 P
+  d) Aufruf: 5 P
+  Summe: 30 P
+
+Aufgabe 3: Microservices
+  a) 12-Faktoren: 5 P
+  b) Circuit Breaker: 5 P
+  c) Gatewayserver: 5 P
+  d) Weitere Services: 5 P
+  Summe: 20 P
+
+Aufgabe 4: Reflexion
+  1) Beispiele: 5 P
+  2) Eigenbezug: 5 P
+  Summe: 10 P, allerdings eigene Teilnote
