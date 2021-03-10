@@ -55,7 +55,7 @@
         <div class="container">
             <h2>REST-Backendservice</h2>
             <p>
-                Zunächst soll in Spring ein Backsendservice programmiert werden, der es ermöglicht,
+                1) Zunächst soll in Spring ein Backsendservice programmiert werden, der es ermöglicht,
                 über einen REST-Webservice auf die Daten der Anwendung zuzugreifen.
                 Hierfür soll auf <a href="https://start.spring.io" target="_blank">start.spring.io</a>
                 ein Springboot-Projekt mit folgenden Komponenten angelegt werden:
@@ -71,7 +71,7 @@
                     Rest Repositories
                 </li>
                 <li>
-                    Rest Repositories HAL Browser
+                    Rest Repositories HAL Explorer
                 </li>
                 <li>
                     Spring HATEOAS
@@ -80,24 +80,49 @@
                     Spring Data JPA
                 </li>
                 <li>
+                    Validation
+                </li>
+                <li>
                     H2 Database
                 </li>
             </ul>
             <p>
-                Die Anwendung soll, wie in den Folien gezeigt, über die Datei <tt>applications.properties</tt>
+                2) Die Anwendung soll, wie in den Folien gezeigt, über die Datei <tt>applications.properties</tt>
                 so konfiguriert werden, dass der REST-Webservice unter der Adresse
                 <a href="http://localhost:8080/api" target="_blank">http://localhost:8080/api</a> aufrufbar ist.
                 Folgendes Datenmodell soll implementiert werden:
             </p>
+            <!--
             <div>
                 <a href="datenmodell.png" target="_blank">
                    <img src="datenmodell.png" alt="Datenmodell" style="max-width: calc(100% - 1em); padding: 0.5em; background: white;" />
                </a>
             </div>
+            -->
+            <ul>
+                <li>
+                    Es kann mehrere <b>Streamingdienste</b> geben.
+                </li>
+                <li>
+                    Jeder Streamingdienst bietet mehrere <b>Serien und Filme</b>.
+                </li>
+                <li>
+                    Jede Serie besitzt mehrere <b>Episoden</b> in verschiedenen <b>Staffeln</b>.
+                </li>
+            </ul>
             <p>
-                Teste den Webserivce mit der eingebauten Weboberfläche oder mit Postman 📨, um zu zeigen,
-                dass er funktioniert. Sorge zusätzlich dafür, dass, wie in den Folien gezeigt, mit einem
+                Zu jeder Entität sind geeignete Attribute wie zum Beispiel der Name der Serie, Studio,
+                Jahr der Erstausstrahlung und so weiter zu definieren. Beachte dabei, dass es mehrere
+                Möglichkeiten gibt, die Daten zu modellieren, von denen keine notwendigerweise besser
+                als die andere sein muss.
+            </p>
+            <p>
+                3) Sorge dafür, dass, wie in den Folien gezeigt, mit einem
                 im Quellcode hinterlegten SQL-Skript automatisch Testdaten angelegt werden.
+            </p>
+            <p>
+                4) Teste den Webserivce mit der eingebauten Weboberfläche oder mit Postman 📨, um zu zeigen,
+                dass er funktioniert. Der Test soll mit Screenshots dokumentiert werden.
             </p>
         </div>
 
@@ -139,7 +164,7 @@
             <h2>Hinweise</h2>
             <p>
                 Die Char-Felder im Datenmodell werden in Java als ganz normale String-Felder definiert.
-                Mit der Annotation <tt>@Colun(length = ...)</tt> kann deren technische Länge in der
+                Mit der Annotation <tt>@Column(length = ...)</tt> kann deren technische Länge in der
                 Datenbank begrenzt werden.
             </p>
             <p>
