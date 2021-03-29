@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🙂 Aufgabe: Golfcard Plus</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Microservice-Architekturmuster</h1>
+            <h2>Übungsaufgabe „Golfcard Plus” ⛳</h2>
+        </div>
+
+        <div class="container">
+            <p>
+                Im Kapitel über die REST API-Entwicklung haben wir die Anwendung „Golfcard” kennengelernt. Sie diente als Beispiel
+                für eine moderne Webanwendung mit einer Single Page App als Frontend und einer mit REST-Webservices angesprochenen
+                Spring-Anwendung als Backend. In dieser Aufgabe soll die App nun wieder als Beispiel herhalten, dieses mal aber in
+                einer erweiterten Version bestehend aus dem <b>Frontend</b>, einem <b>Backend zur Verwaltung von Golfplätzen</b>,
+                einem <b>Backend zur Verwaltung der Scorekarten</b> sowie einem <b>API-Gateway</b>:
+            </p>
+            <img src="Architektur.png" alt="Architekturskizze" class="no-border" style="max-width: 100%;" >
+            <table>
+               <tr>
+                   <td style="max-width: 50%; padding-bottom: 0.5em;">
+                       <a href="screenshot1.png" target="_blank">
+                           <img src="screenshot1.png" alt="Screenshot 1" style="max-width: 100%;" />
+                       </a>
+                   </td>
+                   <td style="max-width: 50%; padding-bottom: 0.5em;">
+                       <a href="screenshot2.png" target="_blank">
+                           <img src="screenshot2.png" alt="Screenshot 2" style="max-width: 100%;" />
+                       </a>
+                   </td>
+               </tr>
+               <tr>
+                   <td style="max-width: 50%;">
+                       <a href="screenshot3.png" target="_blank">
+                           <img src="screenshot3.png" alt="Screenshot 3" style="max-width: 100%;" />
+                       </a>
+                   </td>
+                   <td style="max-width: 50%;">
+                       <a href="screenshot4.png" target="_blank">
+                           <img src="screenshot4.png" alt="Screenshot 4" style="max-width: 100%;" />
+                       </a>
+                   </td>
+               </tr>
+           </table>
+           <p>
+               In dieser Aufgabe soll es darum gehen, die Anwendungskomponenten durch einen Nameserver voneinander zu entkoppeln
+               sowie den laufenden Betrieb aller Komponenten in einem Admin-Dashboard zu überwachen.
+           </p>
+        </div>
+
+        <div class="container">
+            <h2>Die Anwendung starten</h2>
+            <p>
+                Deine erste Aufgabe ist ganz einfach. Lade die Quellcodes auf deinen Rechner und versuche, die Anwendung zum
+                Laufen zu bringen. Hierzu musst du einfach nur die einzelnen Services in folgender Reihenfolge starten.
+                Dabei kannst du die noch fehlenden Services zunächst ignorieren.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Service</th>
+                        <th>Webadresse</th>
+                        <th>Hinweise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Admin-Server</td>
+                        <td><a href="http://localhost:8888/" target="_blank">http://localhost:8888/</a></td>
+                        <td>Fehlt anfangs noch</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nameserver</td>
+                        <td><a href="http://localhost:8761/" target="_blank">http://localhost:8761/</a></td>
+                        <td>Fehlt anfangs noch</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>API-Gateway</td>
+                        <td><a href="http://localhost:8090/" target="_blank">http://localhost:8090/</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Backend Golfplatz</td>
+                        <td><a href="http://localhost:8091/api/" target="_blank">http://localhost:8091/api/</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Backend Scorekarte</td>
+                        <td><a href="http://localhost:8092/api/" target="_blank">http://localhost:8092/api/</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Frontend</td>
+                        <td><a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                Funktional ist die Anwendung bereits fertig programmiert. Sie sollte sich daher wie in den Screenshots oben
+                dargestellt (hoffentlich) fehlerfrei verhalten. 🙂
+            </p>
+        </div>
+
+        <div class="container">
+            <h2>Admin-Server hinzufügen</h2>
+            <p>
+                Nachdem die Anwendung nun läuft, wollen wir ihren Betrieb mit einem Admin-Dashboard überwachen.
+                Dieses soll anzeigen, ob alle Bestandteile fehlerfrei laufen und sowie verschiedene Informationen
+                zur Fehlersuche im laufenden Betrieb anbieten. Die Anwendung soll daher um den in der Vorlesung
+                vorgestellten „Spring Boot Admin Server” erweitert werden. Hierfür kannst du wie folgt vorgehen:
+            </p>
+            <ol>
+                <li>
+                    <p>
+                        Erstelle auf <a href="https://start.spring.io/" target="_blank">start.spring.io</a> ein neues
+                        Projekt mit folgenden Parametern:
+                    </p>
+                    <ul>
+                        <li>
+                            <b>Group:</b> dhbwka.wwi.vertsys.aufgabe.golfcardplus
+                        </li>
+                        <li>
+                            <b>Artifact:</b> admin
+                        </li>
+                        <li>
+                            <b>Name:</b> Aufgabe: Golfcard Plus (Admin-Server)
+                        </li>
+                        <li>
+                            <b>Package Name:</b> dhbwka.wwi.vertsys.aufgabe.gcplus.admin
+                        </li>
+                        <li>
+                            <b>Dependencies:</b> Codecentric's Spring Boot Admin (Server)
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>
+                        Übernehme folgenden Inhalt für die Datei <tt>application.properties</tt>:
+                    </p>
+                    <p style="font-family: monospace;">
+                        spring.application.name = GCPLUS-ADMIN<br/>
+                        <br/>
+                        # Admin Standardport: 8888<br/>
+                        server.port = 8888<br/>
+                        <br/>
+                        # Wirklich alle Monitoringendpunkte aktivieren<br/>
+                        management.endpoints.web.exposure.include = *<br/>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Kommentiere in der <tt>pom.xml</tt> der anderen Komponenten die Abhängigkeit
+                        <tt>spring-boot-admin-starter-client</tt> ein und kompiliere die Komponenten
+                        erneut (Funktion „Clean and Build” in NetBeans).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Trage in der Konfigurationsdatei aller Services die URL des Admin-Servers
+                        ein. Die hierfür notwendige Property <tt>spring.boot.admin.client.url</tt>
+                        ist bereits überall vorhanden, besitzt jedoch noch keine Ausprägung.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Stoppe alle Services und starte sie in der oben genannten Reihenfolge neu.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Im Admin-Dashboard solltest du nun beobachten können, wie die Services online gehen.
+                        Schaue dir dabei auch an, wie sich das Dashboard (z.B. in der Wallboard-Ansicht) verhält,
+                        wenn du einen Service stoppst.
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="container">
+            <h2>Nameserver hinzufügen</h2>
+            <p>
+                In der aktuellen Version lässt sich die Anwendung zwar einem Entwickler-Laptop lokal starten.
+                Im Produktivbetrieb ist aber problematisch, dass alle Services über <tt>localhost</tt>-Adressen
+                direkt aufeinander verweisen. In den meisten Fällen ist bereits durch eine zweite Konfigurationsdatei
+                namens <tt>application-cloud.properties</tt> Vorsorge getroffen, um die Adressen, die sich nicht aus
+                dem Namensdienst auslesen lassen, später in Form von Umgebungsvariablen des Betriebssystems übergeben
+                zu können.
+            </p>
+            <p>
+                Dieselbe Technik könnte im Grunde genommen zwar auch verwendet werden, um in der Konfiguration des
+                API-Gateways die Adressen der beiden Backend-Services bekannt zu machen. Etwas schöner ist jedoch
+                die Verwendung eines Namensdienstes, weil dadurch alle Verwender automatisch aktualisiert werden,
+                wenn sich die Adresse eines Microservices ändert. Gehe deshalb wie folgt vor, um den in Spring
+                mitgelieferten „Eureka“ Namensdienst zu aktivieren:
+            </p>
+            <ol>
+                <li>
+                    <p>
+                        Erstelle auf <a href="https://start.spring.io/" target="_blank">start.spring.io</a> ein neues
+                        Projekt mit folgenden Parametern:
+                    </p>
+                    <ul>
+                        <li>
+                            <b>Group:</b> dhbwka.wwi.vertsys.aufgabe.golfcardplus
+                        </li>
+                        <li>
+                            <b>Artifact:</b> nameserver
+                        </li>
+                        <li>
+                            <b>Name:</b> Aufgabe: Golfcard Plus (Namensserver)
+                        </li>
+                        <li>
+                            <b>Package Name:</b> dhbwka.wwi.vertsys.aufgabe.gcplus.nameserver
+                        </li>
+                        <li>
+                            <b>Dependencies:</b> Eureka Server, odecentric's Spring Boot Admin (Client)
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>
+                        Übernehme folgenden Inhalt für die Datei <b><tt>application.properties</tt></b>:
+                    </p>
+                    <p style="font-family: monospace;">
+                        spring.application.name = GCPLUS-NAMESERVER<br/>
+                        <br/>
+                        # Eureka Standardport: 8761<br/>
+                        server.port = 8761<br/>
+                        <br/>
+                        # Den Namensdienst selbst nicht beim Namensdienst registrieren. :-)<br/>
+                        eureka.client.registerWithEureka = false<br/>
+                        eureka.client.fetchRegistry = false<br/>
+                        <br/>
+                        # Timeout-Intervall für abgestürzte Services hochsetzen, damit wir in diesem<br/>
+                        # Minibeispiel keine falschen Alarme wegen zu wenig aktiver Services bekommen,<br/>
+                        # wir in Wirklichkeit aber gerade mal einen Service gestartet haben.<br/>
+                        eureka.server.eviction-interval-timer-in-ms = 10000<br/>
+                        <br/>
+                        # Adresse des Admin-Servers<br/>
+                        # Vgl. https://codecentric.github.io/spring-boot-admin/current/#spring-boot-admin-client<br/>
+                        spring.boot.admin.client.url = http://localhost:8888<br/>
+                        <br/>
+                        # Wirklich alle Monitoringendpunkte aktivieren<br/>
+                        management.endpoints.web.exposure.include = *<br/>
+                        <br/>
+                        # Log-Einträge auf Platte sichern, damit diese über die Monitoring Webservices<br/>
+                        # abgerufen werden können und in der Admin-Oberfläche sichtbar sind<br/>
+                        logging.file.name = ${user.home}/gcplus-nameserver.log<br/>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Kommentiere in der <tt>pom.xml</tt> der anderen Komponenten die Abhängigkeit
+                        <tt>spring-cloud-starter-netflix-eureka-client</tt> ein und kompiliere
+                        die Komponenten erneut (Funktion „Clean and Build” in NetBeans).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Trage in der Konfigurationsdatei aller Services die URL des Namensservers
+                        ein. Die hierfür notwendige Property <tt>eureka.client.serviceUrl.defaultZone</tt>
+                        ist bereits überall vorhanden, besitzt jedoch noch keine Ausprägung.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Passe die Konfiguration des API-Gateways so an, dass in die Zieladressen der beiden
+                        Backend-Services in den Routingregeln nicht mehr hart-codiert hinterlegt sind, sondern
+                        aus dem Namensdienst gezogen werden.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Kommentiere zusätzlich im Frontend den gekennzeichneten Quellcode in der Klasse
+                        <tt>GetGatewayUrlController</tt> wieder ein und tausche Adresse in der Property
+                        <tt>gcplus.gateway</tt> gegen dan logischen Namen des API-Gateways aus.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Stoppe alle Services und starte sie in der oben genannten Reihenfolge neu.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Daumen drücken! Wenn alles gut läuft, sollte die Anwendung weiterhin fehlerfrei funktionieren.
+                        In der Weboberfläche des Namensdienstes kann aber sehen, welche Services sind bei ihm registriert haben.
+                    </p>
+                </li>
+            </ol>
+        </div>
+    </body>
+</html>
